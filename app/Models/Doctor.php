@@ -40,6 +40,6 @@ class Doctor extends Model
 
     public function day()
     {
-        return $this->belongsToMany('App\Models\Day','day_doctor');
+        return $this->belongsToMany(Day::class,'day_doctor');
     }
 }

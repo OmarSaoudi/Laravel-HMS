@@ -38,6 +38,11 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Department</th>
+                <th>Specialist</th>
+                <th>Blood</th>
+                <th>Phone</th>
+                <th>Status</th>
                 <th>Operation</th>
               </tr>
               </thead>
@@ -47,6 +52,15 @@
                 <td>{{ $loop->index + 1 }}</td>
                 <td>{{ $doctor->name }}</td>
                 <td>{{ $doctor->email }}</td>
+                <td>{{ $doctor->department->name }}</td>
+                <td>{{ $doctor->specialist->name }}</td>
+                <td>{{ $doctor->blood->name }}</td>
+                <td>{{ $doctor->phone }}</td>
+                <td>
+                    @if($doctor->status == 'A') Active
+                    @else Inactive
+                    @endif
+                </td>
                 <td>
                   <a href="{{ route('doctors.edit',$doctor->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                   <a class="btn btn-info btn-sm" href="{{ route('doctors.show',$doctor->id) }}"><i class="fa fa-eye"></i></a>
@@ -61,6 +75,11 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Department</th>
+                <th>Specialist</th>
+                <th>Blood</th>
+                <th>Phone</th>
+                <th>Status</th>
                 <th>Operation</th>
               </tr>
               </tfoot>
