@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
     Departments\DepartmentController,
     Specialists\SpecialistController,
+    Ambulances\AmbulanceController,
 };
 
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,6 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
     Route::resource('departments', DepartmentController::class);
     Route::resource('specialists', SpecialistController::class);
+    Route::resource('ambulances', AmbulanceController::class);
 
 });

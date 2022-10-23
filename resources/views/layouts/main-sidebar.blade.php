@@ -29,6 +29,7 @@
       <li class="header">MASTER</li>
       <li><a href="{{ route('departments.index') }}"><i class="fa fa-building-o"></i> <span>Departments</span></a></li>
       <li><a href="{{ route('specialists.index') }}"><i class="fa fa-sitemap"></i> <span>Specialists</span></a></li>
+      <li><a href="{{ route('ambulances.index') }}"><i class="fa fa-ambulance"></i> <span>Ambulances</span></a></li>
     </ul>
   </section>
   <!-- /.sidebar -->
