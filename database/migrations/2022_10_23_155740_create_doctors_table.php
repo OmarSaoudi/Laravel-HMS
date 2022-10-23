@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('degree')->nullable();
             $table->string('address');
             $table->string('phone');
-            $table->string('image')->default('default.png');
             $table->text('note')->nullable();
             $table->char('status', 1)->comment('A = Active, I = Inactive');
 

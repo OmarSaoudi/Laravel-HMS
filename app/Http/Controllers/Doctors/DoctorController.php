@@ -1,20 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Doctors;
+use App\Http\Controllers\Controller;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use App\Repository\DoctorRepositoryInterface;
+
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $Doctor;
+
+    public function __construct(DoctorRepositoryInterface $Doctor)
+    {
+        $this->Doctor = $Doctor;
+    }
+
+
     public function index()
     {
-        //
+        return $this->Doctor->GetDoctors();
     }
 
     /**
@@ -24,7 +31,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return $this->Doctor->CreateDoctors();
     }
 
     /**
@@ -35,7 +42,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->Doctor->StoreDoctors($request);
     }
 
     /**
@@ -44,9 +51,9 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show($id)
     {
-        //
+        return $this->Doctor->ShowDoctors($id);
     }
 
     /**
@@ -55,9 +62,9 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doctor $doctor)
+    public function edit($id)
     {
-        //
+        return $this->Doctor->EditDoctors($id);
     }
 
     /**
@@ -67,9 +74,9 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request)
     {
-        //
+        return $this->Doctor->UpdateDoctors($request);
     }
 
     /**
@@ -78,8 +85,8 @@ class DoctorController extends Controller
      * @param  \App\Models\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Doctor->DeleteDoctors($request);
     }
 }
