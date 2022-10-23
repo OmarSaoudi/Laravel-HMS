@@ -23,13 +23,25 @@ return new class extends Migration
             $table->string('degree')->nullable();
             $table->string('address');
             $table->string('phone');
-            $table->bigInteger( 'specialist_id' )->unsigned();
-            $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
-            $table->bigInteger( 'department_id' )->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->string('image')->default('default.png');
             $table->text('note')->nullable();
             $table->char('status', 1)->comment('A = Active, I = Inactive');
+
+            $table->bigInteger( 'specialist_id' )->unsigned();
+            $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
+
+            $table->bigInteger( 'department_id' )->unsigned();
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+
+            $table->bigInteger( 'blood_id' )->unsigned();
+            $table->foreign('blood_id')->references('id')->on('bloods')->onDelete('cascade');
+
+            $table->bigInteger( 'nationalitie_id' )->unsigned();
+            $table->foreign('nationalitie_id')->references('id')->on('nationalities')->onDelete('cascade');
+
+            $table->bigInteger( 'gender_id' )->unsigned();
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
