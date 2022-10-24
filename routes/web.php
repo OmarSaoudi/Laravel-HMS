@@ -5,6 +5,7 @@ use App\Http\Controllers\{
     Specialists\SpecialistController,
     Ambulances\AmbulanceController,
     Doctors\DoctorController,
+    Nurses\NurseController,
 };
 
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,5 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::resource('specialists', SpecialistController::class);
     Route::resource('ambulances', AmbulanceController::class);
     Route::resource('doctors', DoctorController::class);
+    Route::resource('nurses', NurseController::class);
 });

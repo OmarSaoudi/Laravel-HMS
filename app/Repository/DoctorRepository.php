@@ -37,6 +37,7 @@ class DoctorRepository implements DoctorRepositoryInterface{
     {
 
         try {
+
             $doctors = new Doctor();
             $doctors->name = ['en' => $request->name_en, 'ar' => $request->name];
             $doctors->email = $request->email;
