@@ -89,4 +89,14 @@ class DoctorController extends Controller
     {
         return $this->Doctor->DeleteDoctors($request);
     }
+
+    public function delete_all_d(Request $request)
+    {
+        return $this->Doctor->delete_all_d($request);
+    }
+
+    public function DownloadAttachment($filename)
+    {
+        return $this->Doctor->DownloadAttachment($filename);
+    }
 }

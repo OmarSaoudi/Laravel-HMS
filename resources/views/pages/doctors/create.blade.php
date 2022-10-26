@@ -217,6 +217,13 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-12">
+                              <label>Images <span class="text-danger">*</span></label>
+                              <input type="file" accept="image/*" name="file_name" required>
+                            </div>
+                        </div>
+
                         <br><br>
                         <div class="form-group" style="text-align:center">
                             <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Saving Data</button>

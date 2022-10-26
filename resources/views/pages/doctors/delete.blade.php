@@ -9,11 +9,11 @@
     <div class="modal-body">
       <form action="{{ route('doctors.destroy','test') }}" method="post">
       @csrf
-      {{ method_field('delete') }}
+      @method('delete')
         <div class="modal-body">
           <p>Are sure of the deleting process ?</p><br>
           <input type="hidden" name="id"  value="{{ $doctor->id }}">
-          <input class="form-control" name="name" value="{{ $doctor->name }}" type="text" readonly>
+          <input class="form-control" type="text" name="name" value="{{ $doctor->name }}" readonly>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger">Save changes</button>

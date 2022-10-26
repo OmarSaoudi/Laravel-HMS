@@ -35,6 +35,7 @@ return new class extends Migration
             $table->foreign('nationalitie_id')->references('id')->on('nationalities')->onDelete('cascade');
             $table->bigInteger( 'gender_id' )->unsigned();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
+            $table->string('file_name');
             $table->timestamps();
         });
     }
