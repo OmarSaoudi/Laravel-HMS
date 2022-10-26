@@ -224,9 +224,9 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                              <img src="{{ URL::asset('attachments/doctor/'.$doctors->file_name) }}" type="image/*"  height="100px" width="100px"><br><br>
+                              <img src="{{ URL::asset('attachments/doctors_images/'.$doctors->doctors_images) }}" type="image/*"  height="100px" width="100px"><br><br>
                               <label>Images <span class="text-danger">*</span></label>
-                              <input type="file" accept="image/*" name="file_name" required>
+                              <input type="file" accept="image/*" name="doctors_images" required>
                             </div>
                         </div>
 

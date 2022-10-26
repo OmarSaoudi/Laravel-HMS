@@ -25,9 +25,6 @@ interface DoctorRepositoryInterface{
     // DeleteDoctors
     public function DeleteDoctors($request);
 
-    // DeleteAllDoctors
-    public function delete_all_d($request);
-
     // DownloadAttachmentDoctors
     public function DownloadAttachment($filename);
 

@@ -21,10 +21,10 @@ return new class extends Migration
             $table->date('date_birth');
             $table->date('joining_date');
             $table->string('degree')->nullable();
-            $table->string('address');
+            $table->string('address');//
             $table->string('phone');
-            $table->text('note')->nullable();
-            $table->char('status', 1)->comment('A = Active, I = Inactive');
+            $table->text('note')->nullable();//
+            $table->char('status', 1)->comment('A = Active, I = Inactive');//
             $table->bigInteger( 'specialist_id' )->unsigned();
             $table->foreign('specialist_id')->references('id')->on('specialists')->onDelete('cascade');
             $table->bigInteger( 'department_id' )->unsigned();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->foreign('nationalitie_id')->references('id')->on('nationalities')->onDelete('cascade');
             $table->bigInteger( 'gender_id' )->unsigned();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
-            $table->string('file_name');
+            $table->string('doctors_images');
             $table->timestamps();
         });
     }

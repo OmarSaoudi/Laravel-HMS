@@ -27,6 +27,7 @@ return new class extends Migration
             $table->foreign('blood_id')->references('id')->on('bloods')->onDelete('cascade');
             $table->bigInteger( 'nationalitie_id' )->unsigned();
             $table->foreign('nationalitie_id')->references('id')->on('nationalities')->onDelete('cascade');
+            $table->string('nurses_images');
             $table->timestamps();
         });
     }

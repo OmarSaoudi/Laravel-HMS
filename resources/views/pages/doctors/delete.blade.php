@@ -13,6 +13,7 @@
         <div class="modal-body">
           <p>Are sure of the deleting process ?</p><br>
           <input type="hidden" name="id"  value="{{ $doctor->id }}">
+          <input type="hidden" name="doctors_images" value="{{ $doctor->doctors_images }}">
           <input class="form-control" type="text" name="name" value="{{ $doctor->name }}" readonly>
         </div>
         <div class="modal-footer">

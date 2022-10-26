@@ -32,6 +32,7 @@
       <li><a href="{{ route('ambulances.index') }}"><i class="fa fa-ambulance"></i> <span>Ambulances</span></a></li>
       <li><a href="{{ route('doctors.index') }}"><i class="fa fa-user-md"></i> <span>Doctors</span></a></li>
       <li><a href="{{ route('nurses.index') }}"><i class="fa fa-users"></i> <span>Nurses</span></a></li>
+      <li><a href="{{ route('settings.index') }}"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
     </ul>
   </section>
   <!-- /.sidebar -->

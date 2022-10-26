@@ -6,8 +6,11 @@ use App\Models\Department;
 use App\Models\Nationalitie;
 use App\Models\Blood;
 use App\Models\Nurse;
+use App\Http\Traits\AttachFilesTrait;
 
 class NurseRepository implements NurseRepositoryInterface{
+
+    use AttachFilesTrait;
 
     public function GetNurses()
     {
@@ -24,6 +27,7 @@ class NurseRepository implements NurseRepositoryInterface{
 
             $nurses = new Nurse();
             $nurses->name = ['en' => $request->name_en, 'ar' => $request->name];
+            $nurses->nurses_images =  $request->file('nurses_images')->getClientOriginalName();
             $nurses->email = $request->email;
             $nurses->date_birth = $request->date_birth;
             $nurses->joining_date = $request->joining_date;
@@ -34,6 +38,7 @@ class NurseRepository implements NurseRepositoryInterface{
             $nurses->blood_id = $request->blood_id;
             $nurses->nationalitie_id = $request->nationalitie_id;
             $nurses->save();
+            $this->uploadFile($request,'nurses_images','nurses_images');
             return redirect()->route('nurses.index');
 
         }

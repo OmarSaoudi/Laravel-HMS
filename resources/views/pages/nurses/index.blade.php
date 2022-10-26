@@ -36,6 +36,7 @@
               <thead>
               <tr>
                 <th>#</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -52,6 +53,7 @@
               @foreach($nurses as $nurse)
               <tr>
                 <td>{{ $loop->index + 1 }}</td>
+                <td><img src="{{ URL::asset('attachments/nurses_images/'.$nurse->nurses_images) }}" height="50px" width="60px"></td>
                 <td>{{ $nurse->name }}</td>
                 <td>{{ $nurse->email }}</td>
                 <td>{{ $nurse->phone }}</td>
@@ -321,6 +323,7 @@
               <tfoot>
               <tr>
                 <th>#</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -357,7 +360,7 @@
               <h4 class="modal-title">Add Nurse</h4>
         </div>
         <div class="modal-body">
-          <form action="{{ route('nurses.store') }}" method="post">
+          <form action="{{ route('nurses.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
               @csrf
 
               <div class="row">
@@ -455,6 +458,13 @@
                       <textarea name="note" class="form-control" placeholder="Enter ..."></textarea>
                       <span class="help-block with-errors"></span>
                     </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Images <span class="text-danger">*</span></label>
+                  <input type="file" accept="image/*" name="nurses_images" required>
                 </div>
               </div>
 

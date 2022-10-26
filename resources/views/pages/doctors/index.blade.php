@@ -30,13 +30,11 @@
             <h3 class="box-title">Doctors List <small>{{ $doctors->count() }}</small></h3>
             <br><br>
             <a href="doctors/create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
-            <button type="button" class="btn btn-danger" id="btn_delete_all"><i class="fa fa-trash"></i> Delete All</button>
           <!-- /.box-header -->
-          <div class="box-body" id="datatable">
+          <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
                 <th>Image</th>
                 <th>Name</th>
@@ -52,9 +50,8 @@
               <tbody>
               @foreach($doctors as $doctor)
               <tr>
-                <td><input type="checkbox"  value="{{ $doctor->id }}" class="box1"></td>
                 <td>{{ $loop->index + 1 }}</td>
-                <td><a href="{{ route('DownloadAttachment', $doctor->file_name ) }}"><img src="{{ URL::asset('attachments/doctor/'.$doctor->file_name) }}" type="image/*"  height="100px" width="100px"></a></td>
+                <td><a href="{{ route('DownloadAttachment', $doctor->doctors_images ) }}"><img src="{{ URL::asset('attachments/doctors_images/'.$doctor->doctors_images) }}" height="50px" width="60px"></a></td>
                 <td>{{ $doctor->name }}</td>
                 <td>{{ $doctor->email }}</td>
                 <td>{{ $doctor->department->name }}</td>
@@ -77,7 +74,6 @@
               </tbody>
               <tfoot>
               <tr>
-                <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
                 <th>Image</th>
                 <th>Name</th>
@@ -103,35 +99,6 @@
   <!-- /.content -->
 </div>
 
-<!-- Delete All -->
-<div class="modal fade" id="delete_all_d">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-              <h4 class="modal-title">Delete All Doctors</h4>
-        </div>
-        <div class="modal-body">
-          <form action="{{ route('delete_all_d') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <p>Are sure of the deleting process ?</p><br>
-                        <input class="text" type="hidden" id="delete_all_id" name="delete_all_id" value=''>
-                    </div>
-
-                    <div class="modal-footer">
-                         <button type="submit" class="btn btn-danger">Save changes</button>
-                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- End Delete All -->
-
 @endsection
 
 
@@ -142,20 +109,5 @@
   $(function () {
     $('#example1').DataTable()
   })
-</script>
-<script type="text/javascript">
-    $(function() {
-       $("#btn_delete_all").click(function() {
-           var selected = new Array();
-           $("#datatable input[type=checkbox]:checked").each(function() {
-               selected.push(this.value);
-           });
-
-           if (selected.length > 0) {
-               $('#delete_all_d').modal('show')
-               $('input[id="delete_all_id"]').val(selected);
-           }
-       });
-    });
 </script>
 @endsection

@@ -9,11 +9,9 @@ use App\Models\Nationalitie;
 use App\Models\Blood;
 use App\Models\Doctor;
 use App\Models\Day;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Traits\AttachFilesTrait;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\DB;
 
 class DoctorRepository implements DoctorRepositoryInterface{
 
@@ -43,7 +41,7 @@ class DoctorRepository implements DoctorRepositoryInterface{
 
             $doctors = new Doctor();
             $doctors->name = ['en' => $request->name_en, 'ar' => $request->name];
-            $doctors->file_name =  $request->file('file_name')->getClientOriginalName();
+            $doctors->doctors_images =  $request->file('doctors_images')->getClientOriginalName();
             $doctors->email = $request->email;
             $doctors->password = Hash::make($request->password);
             $doctors->date_birth = $request->date_birth;
@@ -59,7 +57,7 @@ class DoctorRepository implements DoctorRepositoryInterface{
             $doctors->nationalitie_id = $request->nationalitie_id;
             $doctors->gender_id = $request->gender_id;
             $doctors->save();
-            $this->uploadFile($request,'file_name');
+            $this->uploadFile($request,'doctors_images','doctors_images');
             $doctors->day()->attach($request->day_id);
             return redirect()->route('doctors.index');
 
@@ -114,11 +112,11 @@ class DoctorRepository implements DoctorRepositoryInterface{
                 $doctors->day()->sync(array());
             }
 
-            if($request->hasfile('file_name')){
-                $this->deleteFile($doctors->file_name);
-                $this->uploadFile($request,'file_name');
-                $file_name_new = $request->file('file_name')->getClientOriginalName();
-                $doctors->file_name = $doctors->file_name !== $file_name_new ? $file_name_new : $doctors->file_name;
+            if($request->hasfile('doctors_images')){
+                $this->deleteFile($doctors->doctors_images);
+                $this->uploadFile($request,'doctors_images','doctors_images');
+                $doctors_images_new = $request->file('doctors_images')->getClientOriginalName();
+                $doctors->doctors_images = $doctors->doctors_images !== $doctors_images_new ? $doctors_images_new : $doctors->doctors_images;
             }
             $doctors->save();
 
@@ -131,22 +129,23 @@ class DoctorRepository implements DoctorRepositoryInterface{
 
     public function DeleteDoctors($request)
     {
-        $this->deleteFile($request->file_name);
+        $this->deleteFile($request->doctors_images);
         Doctor::destroy($request->id);
         return redirect()->route('doctors.index');
     }
 
-    public function delete_all_d($request)
+    public function deleteFile($name)
     {
-        $this->deleteFile($request->file_name);
-        $delete_all_id = explode(",", $request->delete_all_id);
-        Doctor::whereIn('id', $delete_all_id)->delete();
-        return redirect()->route('doctors.index');
+        $exists = Storage::disk('upload_attachments')->exists('attachments/doctors_images/'.$name);
+        if($exists)
+        {
+            Storage::disk('upload_attachments')->delete('attachments/doctors_images/'.$name);
+        }
     }
 
     public function DownloadAttachment($filename)
     {
-        return response()->download(public_path('attachments/doctor/'.$filename));
+        return response()->download(public_path('attachments/doctors_images/'.$filename));
     }
 
 
