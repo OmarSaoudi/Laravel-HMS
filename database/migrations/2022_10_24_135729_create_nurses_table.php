@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('nurses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->date('date_birth');
             $table->date('joining_date');

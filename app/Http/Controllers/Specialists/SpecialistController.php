@@ -38,7 +38,7 @@ class SpecialistController extends Controller
     public function store(Request $request)
     {
         try {
-            $specialists = new Specialist();
+            $specialists = new Specialist;
             $specialists->name = ['ar' => $request->name, 'en' => $request->name_en];
             $specialists->save();
 

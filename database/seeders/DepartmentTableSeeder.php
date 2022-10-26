@@ -55,8 +55,12 @@ class DepartmentTableSeeder extends Seeder
 
         ];
 
-        foreach ($departments as $d) {
-            Department::create(['name' => $d]);
+        foreach ($departments as $department) {
+            Department::create([
+            'name' => $department,
+            'status' => 1,
+            'note' => 'Good',
+            ]);
         }
     }
 }

@@ -271,7 +271,6 @@
                            </div>
                        </div>
                      </div>
-
                      <div class="row">
                        <div class="col-md-6">
                            <div class="form-group">
@@ -288,16 +287,34 @@
                            </div>
                        </div>
                      </div>
-
-                     <div class="form-group">
-                        <label>Status : </label>
-                        @if ($nurse->status === 1)
-                          <label class="badge badge-success">Active</label>
-                        @else
-                          <label class="badge badge-danger">Not Active</label>
-                        @endif
+                     <div class="row">
+                       <div class="col-md-6">
+                          <div class="form-group">
+                             <label>Status : </label>
+                             @if ($nurse->status === 1)
+                               <input placeholder="Active" class="form-control" readonly>
+                             @else
+                               <input placeholder="Not Active" class="form-control" readonly>
+                             @endif
+                          </div>
+                       </div>
+                       <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Note</label>
+                             <input value="{{ $nurse->note }}" class="form-control" readonly>
+                             <span class="help-block with-errors"></span>
+                          </div>
+                       </div>
                      </div>
 
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>Image</label><br>
+                              <img src="{{ URL::asset('attachments/nurses_images/'.$nurse->nurses_images) }}" height="100px" width="100px">
+                           </div>
+                        </div>
+                      </div>
                      <div class="modal-footer">
                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                      </div>

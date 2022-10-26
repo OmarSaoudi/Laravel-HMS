@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('status')->nullable();
+            $table->integer('status');
             $table->text('note')->nullable();
             $table->timestamps();
         });

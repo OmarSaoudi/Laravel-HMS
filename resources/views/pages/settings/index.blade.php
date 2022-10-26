@@ -151,5 +151,5 @@
 
 @endsection
 
-@section('js')
+@section('scripts')
 @endsection
