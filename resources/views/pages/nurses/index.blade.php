@@ -84,8 +84,8 @@
                        <h4 class="modal-title">Nurse Update</h4>
                      </div>
                     <div class="modal-body">
-                     <form action="{{ route('nurses.update', 'test') }}" method="POST">
-                      {{ method_field('PATCH') }}
+                     <form action="{{ route('nurses.update', 'test') }}" method="post" enctype="multipart/form-data">
+                      {{ method_field('patch') }}
                       @csrf
 
                       <div class="row">
@@ -179,6 +179,23 @@
                               <input type="checkbox" class="minimal" name="status">
                           @endif
                       </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                              <label>Note</label>
+                              <textarea name="note" class="form-control" placeholder="Enter ...">{{ $nurse->note }}</textarea>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                          <img src="{{ URL::asset('attachments/nurses_images/'.$nurse->nurses_images) }}" type="image/*"  height="100px" width="100px"><br><br>
+                          <label>Images <span class="text-danger">*</span></label>
+                          <input type="file" accept="image/*" name="nurses_images" required>
+                        </div>
+                    </div>
                       <div class="modal-footer">
                           <button type="submit" class="btn btn-primary">Save changes</button>
                           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -306,6 +323,7 @@
                             <div class="modal-body">
                                 <p>Are sure of the deleting process ?</p><br>
                                 <input id="id" type="hidden" name="id" class="form-control" value="{{ $nurse->id }}">
+                                <input type="hidden" name="nurses_images" value="{{ $nurse->nurses_images }}">
                                 <input class="form-control" name="name" value="{{ $nurse->name }}" type="text" readonly>
                             </div>
                            <div class="modal-footer">

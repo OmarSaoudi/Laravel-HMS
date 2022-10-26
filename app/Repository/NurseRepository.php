@@ -7,6 +7,7 @@ use App\Models\Nationalitie;
 use App\Models\Blood;
 use App\Models\Nurse;
 use App\Http\Traits\AttachFilesTrait;
+use Illuminate\Support\Facades\Storage;
 
 class NurseRepository implements NurseRepositoryInterface{
 
@@ -72,6 +73,12 @@ class NurseRepository implements NurseRepositoryInterface{
               } else {
                 $nurses->status = 2;
             }
+            if($request->hasfile('nurses_images')){
+                $this->deleteFile($nurses->nurses_images);
+                $this->uploadFile($request,'nurses_images','nurses_images');
+                $nurses_images_new = $request->file('nurses_images')->getClientOriginalName();
+                $nurses->nurses_images = $nurses->nurses_images !== $nurses_images_new ? $nurses_images_new : $nurses->nurses_images;
+            }
             $nurses->save();
 
             return redirect()->route('nurses.index');
@@ -83,7 +90,17 @@ class NurseRepository implements NurseRepositoryInterface{
 
     public function DeleteNurses($request)
     {
+        $this->deleteFile($request->nurses_images);
         Nurse::destroy($request->id);
         return redirect()->route('nurses.index');
+    }
+
+    public function deleteFile($name)
+    {
+        $exists = Storage::disk('upload_attachments')->exists('attachments/nurses_images/'.$name);
+        if($exists)
+        {
+            Storage::disk('upload_attachments')->delete('attachments/nurses_images/'.$name);
+        }
     }
 }
