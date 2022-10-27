@@ -11,7 +11,7 @@ class Nurse extends Model
     use HasFactory,HasTranslations;
 
     public $translatable = ['name'];
-    public $incrementing = false;
+    public $table = 'nurses';
     protected $guarded =[];
 
     public function nationalitie()

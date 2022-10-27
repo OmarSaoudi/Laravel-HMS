@@ -18,7 +18,7 @@ class NurseRepository implements NurseRepositoryInterface{
         $data['nationalities'] = Nationalitie::all();
         $data['bloods'] = Blood::all();
         $nurses = Nurse::all();
-        return view('pages.Nurses.index',$data,compact('nurses'));
+        return view('pages.nurses.index',$data,compact('nurses'));
     }
 
 
@@ -26,7 +26,7 @@ class NurseRepository implements NurseRepositoryInterface{
     {
 
         try {
-            $id = IdGenerator::generate(['table' => 'nurses', 'length' => 6, 'prefix' => date('Y')]);
+            $id = IdGenerator::generate(['table' => 'nurses','field'=>'nur_id', 'length' => 8, 'prefix' =>'NUR-']);
             $nurses = new Nurse();
             $nurses->nur_id = $id;
             $nurses->name = ['en' => $request->name_en, 'ar' => $request->name];

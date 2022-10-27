@@ -193,7 +193,7 @@
                         <div class="col-md-12">
                           <img src="{{ URL::asset('attachments/nurses_images/'.$nurse->nurses_images) }}" type="image/*"  height="100px" width="100px"><br><br>
                           <label>Images <span class="text-danger">*</span></label>
-                          <input type="file" accept="image/*" name="nurses_images" required>
+                          <input type="file" accept="image/*" name="nurses_images">
                         </div>
                     </div>
                       <div class="modal-footer">

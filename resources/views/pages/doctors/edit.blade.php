@@ -226,7 +226,7 @@
                             <div class="col-md-12">
                               <img src="{{ URL::asset('attachments/doctors_images/'.$doctors->doctors_images) }}" type="image/*"  height="100px" width="100px"><br><br>
                               <label>Images <span class="text-danger">*</span></label>
-                              <input type="file" accept="image/*" name="doctors_images" required>
+                              <input type="file" accept="image/*" name="doctors_images">
                             </div>
                         </div>
 
