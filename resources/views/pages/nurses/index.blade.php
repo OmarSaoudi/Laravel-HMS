@@ -52,7 +52,7 @@
               <tbody>
               @foreach($nurses as $nurse)
               <tr>
-                <td>{{ $loop->index + 1 }}</td>
+                <td>{{ $nurse->nur_id }}</td>
                 <td><img src="{{ URL::asset('attachments/nurses_images/'.$nurse->nurses_images) }}" height="50px" width="60px"></td>
                 <td>{{ $nurse->name }}</td>
                 <td>{{ $nurse->email }}</td>

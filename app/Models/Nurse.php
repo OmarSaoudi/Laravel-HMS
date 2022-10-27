@@ -11,6 +11,7 @@ class Nurse extends Model
     use HasFactory,HasTranslations;
 
     public $translatable = ['name'];
+    public $incrementing = false;
     protected $guarded =[];
 
     public function nationalitie()
@@ -22,4 +23,5 @@ class Nurse extends Model
     {
         return $this->belongsTo(Blood::class);
     }
+
 }

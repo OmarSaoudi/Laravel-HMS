@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('nurses', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
+            $table->string('nur_id');
             $table->string('name');
             $table->string('email')->unique();
             $table->date('date_birth');

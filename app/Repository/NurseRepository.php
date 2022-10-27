@@ -2,12 +2,12 @@
 
 namespace App\Repository;
 
-use App\Models\Department;
 use App\Models\Nationalitie;
 use App\Models\Blood;
 use App\Models\Nurse;
 use App\Http\Traits\AttachFilesTrait;
 use Illuminate\Support\Facades\Storage;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class NurseRepository implements NurseRepositoryInterface{
 
@@ -21,12 +21,14 @@ class NurseRepository implements NurseRepositoryInterface{
         return view('pages.Nurses.index',$data,compact('nurses'));
     }
 
+
     public function StoreNurses($request)
     {
 
         try {
-
+            $id = IdGenerator::generate(['table' => 'nurses', 'length' => 6, 'prefix' => date('Y')]);
             $nurses = new Nurse();
+            $nurses->nur_id = $id;
             $nurses->name = ['en' => $request->name_en, 'ar' => $request->name];
             $nurses->nurses_images =  $request->file('nurses_images')->getClientOriginalName();
             $nurses->email = $request->email;
@@ -48,6 +50,8 @@ class NurseRepository implements NurseRepositoryInterface{
         }
 
     }
+
+
 
     public function ShowNurses($id)
     {
