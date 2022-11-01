@@ -39,7 +39,7 @@
 
               <p class="text-muted text-center">{{ $doctors->specialist->name }}</p>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+              <a href="{{ $doctors->name }}" class="btn btn-primary btn-block"><b>Follow</b></a>
             </div>
             <!-- /.box-body -->
           </div>
