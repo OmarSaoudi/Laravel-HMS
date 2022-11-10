@@ -222,13 +222,13 @@
                          <div class="form-group">
                            <input type="hidden" name="id" id="id" value="{{ $nurse->id }}">
                            <label>Name Arabic</label>
-                           <input type="text" name="name" value="{{ $nurse->getTranslation('name', 'ar') }}" class="form-control" readonly>
+                           <input type="text" name="name" value="{{ $nurse->name }}" class="form-control" readonly>
                          </div>
                        </div>
                        <div class="col-md-6">
                            <div class="form-group">
-                             <label>Name English</label>
-                             <input type="text" name="name_en" value="{{ $nurse->getTranslation('name', 'en') }}" class="form-control" readonly>
+                             <label>ID</label>
+                             <input type="text" name="name_en" value="{{ $nurse->nur_id }}" class="form-control" readonly>
                            </div>
                        </div>
                      </div>

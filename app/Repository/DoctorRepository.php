@@ -20,7 +20,7 @@ class DoctorRepository implements DoctorRepositoryInterface{
     public function GetDoctors()
     {
         $doctors = Doctor::all();
-        return view('pages.doctors.index',compact('doctors'));
+        return view('pages.doctors.index', ['doctors' => $doctors]);
     }
 
     public function CreateDoctors()

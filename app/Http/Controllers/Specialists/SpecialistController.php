@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Specialist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SpecialistController extends Controller
 {
@@ -15,8 +16,11 @@ class SpecialistController extends Controller
      */
     public function index()
     {
-        $specialists = Specialist::all();
-        return view('pages.specialists.index',compact('specialists'));
+        $specialists = DB::table('specialists')
+        ->where(function ($query) {
+            $query->where('name','Orthopaedics');
+        })->get();
+        return $specialists;
     }
 
     /**
