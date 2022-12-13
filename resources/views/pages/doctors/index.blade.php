@@ -44,6 +44,7 @@
                 <th>Blood</th>
                 <th>Phone</th>
                 <th>Status</th>
+                <th>Days</th>
                 <th>Operation</th>
               </tr>
               </thead>
@@ -63,6 +64,7 @@
                     @else Inactive
                     @endif
                 </td>
+                <td>{{ $doctor->days->pluck('name')->join(', ') }}</td>
                 <td>
                   <a href="{{ route('doctors.edit',$doctor->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                   <a class="btn btn-info btn-sm" href="{{ route('doctors.show',$doctor->id) }}"><i class="fa fa-eye"></i></a>

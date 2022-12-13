@@ -38,9 +38,9 @@ class Doctor extends Model
         return $this->belongsTo(Blood::class);
     }
 
-    public function day()
+    public function days()
     {
-        return $this->belongsToMany(Day::class,'day_doctor');
+        return $this->belongsToMany(Day::class,'doctor_day');
     }
 
 }

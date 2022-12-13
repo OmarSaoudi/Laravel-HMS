@@ -221,7 +221,7 @@
                        <div class="col-md-6">
                          <div class="form-group">
                            <input type="hidden" name="id" id="id" value="{{ $nurse->id }}">
-                           <label>Name Arabic</label>
+                           <label>Name</label>
                            <input type="text" name="name" value="{{ $nurse->name }}" class="form-control" readonly>
                          </div>
                        </div>

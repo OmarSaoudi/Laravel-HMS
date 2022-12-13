@@ -16,11 +16,8 @@ class SpecialistController extends Controller
      */
     public function index()
     {
-        $specialists = DB::table('specialists')
-        ->where(function ($query) {
-            $query->where('name','Orthopaedics');
-        })->get();
-        return $specialists;
+        $specialists = Specialist::all();
+        return view('pages.specialists.index',compact('specialists'));
     }
 
     /**

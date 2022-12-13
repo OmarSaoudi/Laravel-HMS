@@ -58,7 +58,7 @@ class DoctorRepository implements DoctorRepositoryInterface{
             $doctors->gender_id = $request->gender_id;
             $doctors->save();
             $this->uploadFile($request,'doctors_images','doctors_images');
-            $doctors->day()->attach($request->day_id);
+            $doctors->days()->attach($request->days);
             return redirect()->route('doctors.index');
 
         }
@@ -106,11 +106,7 @@ class DoctorRepository implements DoctorRepositoryInterface{
             $doctors->nationalitie_id = $request->nationalitie_id;
             $doctors->gender_id = $request->gender_id;
 
-            if (isset($request->day_id)) {
-                $doctors->day()->sync($request->day_id);
-              } else {
-                $doctors->day()->sync(array());
-            }
+            $doctors->days()->sync($request->days);
 
             if($request->hasfile('doctors_images')){
                 $this->deleteFile($doctors->doctors_images);

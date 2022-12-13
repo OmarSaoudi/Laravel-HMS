@@ -198,10 +198,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                    <label>Days</label>
-                                   <select name="day_id[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Day" style="width: 100%;">
-                                      @foreach($days as $day)
+                                   <select name="days[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Day" style="width: 100%;">
+                                      @forelse($days as $day)
                                         <option value="{{ $day->id }}"> {{ $day->name }}</option>
-                                      @endforeach
+                                      @empty
+                                      @endforelse
                                    </select>
                                 </div>
                             </div>

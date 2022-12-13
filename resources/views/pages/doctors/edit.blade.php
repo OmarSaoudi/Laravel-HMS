@@ -200,13 +200,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                    <label>Days</label>
-                                   <select name="day_id[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Day" style="width: 100%;">
-                                      @foreach ($doctors->day as $d)
-                                        <option selected value="{{ $d['id']}} ">{{ $d['name'] }}</option>
-                                      @endforeach
-                                      @foreach($days as $day)
-                                        <option value="{{ $day->id }}"> {{ $day->name }}</option>
-                                      @endforeach
+                                   <select name="days[]" class="form-control select2" multiple="multiple" style="width: 100%;">
+                                      @forelse($days as $day)
+                                        <option value="{{ $day->id }}" {{ in_array($day->id,$doctors->days->pluck('id')->toArray()) ? 'selected' : null }}>{{ $day->name }}</option>
+                                      @empty
+                                      @endforelse
                                    </select>
                                 </div>
                             </div>

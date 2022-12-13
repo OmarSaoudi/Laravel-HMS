@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('day_doctor', function (Blueprint $table) {
+        Schema::create('doctor_day', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('day_id');
-            $table->unsignedBigInteger('doctor_id');
-
             // foreign keys
-            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
-            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
-            $table->timestamps();
+            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
+            $table->foreignId('day_id')->constrained('days')->cascadeOnDelete();
         });
     }
 
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('day_doctor');
+        Schema::dropIfExists('doctor_day');
     }
 };
