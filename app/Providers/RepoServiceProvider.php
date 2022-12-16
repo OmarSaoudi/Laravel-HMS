@@ -15,6 +15,7 @@ class RepoServiceProvider extends ServiceProvider
     {
         $this->app->bind('App\Repository\DoctorRepositoryInterface', 'App\Repository\DoctorRepository');
         $this->app->bind('App\Repository\NurseRepositoryInterface', 'App\Repository\NurseRepository');
+        $this->app->bind('App\Repository\PatientRepositoryInterface', 'App\Repository\PatientRepository');
     }
 
     /**

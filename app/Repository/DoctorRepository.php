@@ -139,6 +139,14 @@ class DoctorRepository implements DoctorRepositoryInterface{
         }
     }
 
+    public function delete_all_d($request)
+    {
+        $delete_all_id = explode(",", $request->delete_all_id);
+        $this->deleteFile($request->doctors_images);
+        Doctor::whereIn('id', $delete_all_id)->delete();
+        return redirect()->route('doctors.index');
+    }
+
     public function DownloadAttachment($filename)
     {
         return response()->download(public_path('attachments/doctors_images/'.$filename));

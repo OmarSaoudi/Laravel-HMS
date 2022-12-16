@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     Ambulances\AmbulanceController,
     Doctors\DoctorController,
     Nurses\NurseController,
+    Patients\PatientController,
     SettingController,
 };
 
@@ -30,7 +31,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::resource('specialists', SpecialistController::class);
     Route::resource('ambulances', AmbulanceController::class);
     Route::resource('doctors', DoctorController::class);
+    Route::post('delete_all_d', [DoctorController::class, 'delete_all_d'])->name('delete_all_d');
     Route::get('DownloadAttachment/{filename}', [DoctorController::class, 'DownloadAttachment'])->name('DownloadAttachment');
     Route::resource('nurses', NurseController::class);
+    Route::resource('patients', PatientController::class);
     Route::resource('settings', SettingController::class);
 });
